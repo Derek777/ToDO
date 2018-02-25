@@ -2,55 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
     <link href="style.css" rel="stylesheet">
     <title>ToDogu</title>
 </head>
 <body>
     <div id="root">
-        <div class="container">
+        <div class="container ">
             <h3>Додати завдання</h3>
-            <input type="text" id="new-task">
-            <button id="add-task">Додати завдання</button>
+            <div class="row">
+                <input type="text" class="form-control col-7" id="new-task">
+                <button id="add-task" class="btn btn-success">Додати завдання</button>
+            </div>
             <h3>Список справ</h3>
             <ul id="unfinished-tasks">
-                <li>
-                    <input type="checkbox">
-                    <label>123</label>
-                    <input type="text">
-                    <button>
-                        <i>edit</i>
-                    </button>
-                    <button>
-                        <i>delete</i>
-                    </button>
+                <li class="form-inline">
+                    <input type="checkbox" class="form-check-input">
+                    <p class=" form-check-label">123</p>
+                    <input type="text" name = "text" class="form-control col-5 text">
+                    <button  class="btn btn-primary edit">Редагувати</button>
+                    <button  class="btn btn-danger delete">Видалити</button>
                 </li>
 
-                <li class="editMode">
-                    <input type="checkbox">
-                    <label>123</label>
-                    <input type="text">
-                    <button>
-                        <i>edit</i>
-                    </button>
-                    <button>
-                        <i>delete</i>
-                    </button>
+                <li class="form-inline editMode">
+                    <input type="checkbox" class="form-check-input ">
+                    <p class=" form-check-label">123</p>
+                    <input type="text" class="form-control col-5 text">
+                    <button  class="btn btn-primary">Редагувати</button>
+                    <button  class="btn btn-danger">Видалити</button>
                 </li>
             </ul>
             <h3>Виконані завдання</h3>
             <ul id="finished-tasks">
-                <li>
-                    <input type="checkbox">
-                    <label>123</label>
-                    <input type="text">
-                    <button>
-                        <i>edit</i>
-                    </button>
-                    <button>
-                        <i>delete</i>
-                    </button>
+                <li class="form-inline editMode">
+                    <input type="checkbox" class="form-check-input ">
+                    <label class=" form-check-label">123</label>
+                    <input type="text" class="form-control col-5">
+                    <button  class="btn btn-primary">Редагувати</button>
+                    <button  class="btn btn-danger">Видалити</button>
                 </li>
-
             </ul>
         </div>
     </div>

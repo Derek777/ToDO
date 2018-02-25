@@ -1,3 +1,20 @@
 body{
     color: red;
 }
+
+.form-inline{
+    margin-bottom: 10px;
+}
+
+.text{
+    visibility: hidden;
+}
+
+p{
+    width: 400px;
+    display: inline-block;
+}
+
+input [name="value"]{
+    max-width: 400px;
+}
