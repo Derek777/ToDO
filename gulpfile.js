@@ -9,5 +9,5 @@ gulp.task("reload", function () {
 
 gulp.task("default", function () {
    livereload.listen();
-   gulp.watch('./*.css' ["reload"]);
+   gulp.watch('./style.css', ["reload"]);
 });
