@@ -9,13 +9,12 @@ function createNewTask(task) {
     var check = document.createElement('input');
     check.type = "checkbox";
     check.className = "form-check-input";
-    var label = document.createElement('p');
-    label.className = "form-check-label";
+    var label = document.createElement('label');
+    label.className = "toEdit";
     label.innerText = task;
     var input =document.createElement('input');
     input.type = "text";
-    input.name = "text";
-    input.className = "form-control col-5 text";
+    input.className = "form-control col-5 hidden";
     var editBtn = document.createElement('button');
     editBtn.className = "btn btn-primary edit";
     editBtn.innerText = "Редагувати";
@@ -38,19 +37,28 @@ function addtask() {
         var taskItem = createNewTask(inputTask.value);
         unfinishedTasks.appendChild(taskItem);
         bindTaskEvents(taskItem, finishTask);
+        console.log(taskItem);
         inputTask.value = "";
     }
 }
 
 function editTask() {
-    var taskItem = this.parentNode;
-    var taskText = taskItem.querySelector('p');
-    var text = taskText.textContent;
-    var input = taskItem.querySelector('.text');
-    taskText.className = "text";
-    input.value = text;
-    input.className = "";
-    console.log(taskText);
+    var taskItem = this.parentNode;                   //li
+    var label = taskItem.querySelector('label'); // label
+    var text = label.textContent;                //text in label
+    var input = taskItem.querySelector('input[type=text]');    //input
+    if(label.classList.contains('toEdit')){
+        input.value = text;
+    }else{
+        label.innerText = input.value;
+    }
+
+    changeClass(label, input);
+
+    // taskText.className = "text";
+    // input.value = text;
+    // input.className = "";
+    // console.log(input);
 }
 
 function deleteTask() {
@@ -60,11 +68,16 @@ function deleteTask() {
 }
 
 function finishTask() {
-    console.log('3');
+    var taskItem = this.parentNode;
+    finishedTasks.appendChild(taskItem);
+    bindTaskEvents(taskItem, unfinishTask);
+
+    // console.log(taskItem);
 }
 
 function unfinishTask() {
-
+    console.log('2');
+    // bindTaskEvents(taskItem, unfinishedTasks);
 }
 
 function bindTaskEvents(tastItem, checkboxEvent) {
@@ -75,6 +88,16 @@ function bindTaskEvents(tastItem, checkboxEvent) {
     checkbox.onclick = checkboxEvent;
     editBtn.onclick = editTask;
     deleteBtn.onclick = deleteTask;
+}
+
+function changeClass(label, input) {
+    if(label.classList.contains('toEdit')){
+        label.className = "hidden";
+        input.className = "toEdit";
+    } else {
+        label.className = "toEdit";
+        input.className = "hidden";
+    }
 }
 addButton.onclick = addtask;
 // console.log(document.querySelector('input[type=checkbox]'));

@@ -1,19 +1,26 @@
-body{
-    color: red;
+body {
+    color: purple;
 }
 
-.form-inline{
+.form-inline {
     margin-bottom: 10px;
 }
 
-.text{
+.hidden {
     visibility: hidden;
-}
-
-p{
-    width: 400px;
+    width: 0;
     display: inline-block;
 }
+
+.toEdit {
+    width: 300px;
+    display: inline-block;
+}
+
+/*p {*/
+    /*width: 400px;*/
+    /*display: inline-block;*/
+/*}*/
 
 input [name="value"]{
     max-width: 400px;
