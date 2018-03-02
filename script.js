@@ -76,8 +76,10 @@ function finishTask() {
 }
 
 function unfinishTask() {
-    console.log('2');
-    // bindTaskEvents(taskItem, unfinishedTasks);
+    var taskItem = this.parentNode;
+    unfinishedTasks.appendChild(taskItem);
+    // console.log('2');
+    bindTaskEvents(taskItem, finishTask);
 }
 
 function bindTaskEvents(tastItem, checkboxEvent) {
