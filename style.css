@@ -1,27 +1,27 @@
-body {
+h3 {
     color: purple;
-}
-
-.form-inline {
-    margin-bottom: 10px;
 }
 
 .hidden {
     visibility: hidden;
     width: 0;
-    display: inline-block;
+    display: none;
 }
 
 .toEdit {
-    width: 300px;
+    width: auto;
+    min-width: 450px;
     display: inline-block;
 }
 
-/*p {*/
-    /*width: 400px;*/
-    /*display: inline-block;*/
-/*}*/
+.task{
+    margin-bottom: 10px;
+}
 
 input [name="value"]{
     max-width: 400px;
+}
+
+#finished-tasks label{
+    text-decoration: line-through;
 }
