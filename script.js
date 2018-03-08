@@ -3,6 +3,13 @@ var inputTask = document.getElementById('new-task');
 var unfinishedTasks = document.getElementById('unfinished-tasks');
 var finishedTasks = document.getElementById('finished-tasks');
 
+
+var localStorageProviderItem = new localStorageProvider();
+var dataServiceItem = new dataService(localStorageProviderItem);
+
+dataServiceItem.read();
+dataServiceItem.save();
+
 function createNewTask(task) {
     var taskItem = document.createElement('li');
     taskItem.className = "form-check-inline task";
@@ -12,7 +19,7 @@ function createNewTask(task) {
     var label = document.createElement('label');
     label.className = "toEdit";
     label.innerText = task;
-    var input =document.createElement('input');
+    var input = document.createElement('input');
     input.type = "text";
     input.className = "form-control hidden";
     var editBtn = document.createElement('button');
@@ -41,32 +48,24 @@ function addtask() {
         }
         unfinishedTasks.appendChild(taskItem);
         bindTaskEvents(taskItem, finishTask);
-        // console.log(taskItem);
         inputTask.value = "";
     }
 }
 
 function editTask() {
-    var taskItem = this.parentNode;                   //li
-    var editBtn = taskItem.querySelector('.edit');  //Edit Btn
-    var label = taskItem.querySelector('label'); // label
-    var text = label.textContent;                //text in label
-    var input = taskItem.querySelector('input[type=text]');    //input
+    var taskItem = this.parentNode;
+    var editBtn = taskItem.querySelector('.edit');
+    var label = taskItem.querySelector('label');
+    var text = label.textContent;
+    var input = taskItem.querySelector('input[type=text]');
     if(label.classList.contains('toEdit')){
         input.value = text;
         editBtn.innerText = "Зберегти";
-
     }else{
         label.innerText = input.value;
         editBtn.innerText = "Редагувати";
     }
-
     changeClass(label, input);
-
-    // taskText.className = "text";
-    // input.value = text;
-    // input.className = "";
-    // console.log(input);
 }
 
 function deleteTask() {
@@ -76,7 +75,6 @@ function deleteTask() {
     if(!ul.querySelector('.task')){
         ul.querySelector('.hidden').className = "toEdit empty";
     }
-
 }
 
 function finishTask() {
@@ -117,7 +115,6 @@ function unfinishTask() {
     }
 
 }
-
 function bindTaskEvents(tastItem, checkboxEvent) {
     var checkbox = tastItem.querySelector('input[type=checkbox]');
     var editBtn = tastItem.querySelector('.edit');
@@ -137,5 +134,34 @@ function changeClass(label, input) {
         input.className = "hidden";
     }
 }
+
+function save() {
+    var unfinishedTasksArr = [];
+    var finishedTasksArr = [];
+}
 addButton.onclick = addtask;
-// console.log(document.querySelector('input[type=checkbox]'));
+
+
+
+function dataService (dataProvider) {
+    this.load = function () {
+        return dataProvider.load();
+    }
+
+    this.save = function () {
+        dataProvider.save();
+    }
+}
+
+function localStorageProvider () {
+    this.load = function () {
+        // read from local storage
+    }
+
+    this.save = function () {
+        // write to local storage
+    }
+}
+
+//function restProvider () {
+//}
